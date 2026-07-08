@@ -14,4 +14,21 @@ pipeline{
             }
         }
     }
+
+    post{
+
+        success{
+            echo 'Automation test passed'
+        }
+        failure{
+            echo 'Automation test failed'
+        }
+
+       always{
+            archiveArtifacts artifacts: 'reports/**, screenshots/**',
+                             allowEmptyArchive: true
+            echo 'Pipeline Execution Completed'
+
+       }
+    }
 }
