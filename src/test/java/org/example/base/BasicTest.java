@@ -20,6 +20,8 @@ public class BasicTest {
         String browser = ConfigReader.getProperties("browser");
         if(browser.equals("chrome")){
             WebDriverManager.chromedriver().setup();
+            String headless =
+                    ConfigReader.getProperties("headless");
 
             ChromeOptions options = new ChromeOptions();
 
@@ -52,7 +54,11 @@ public class BasicTest {
             options.addArguments(
                     "--disable-notifications"
             );
+            if(headless.equalsIgnoreCase("true")){
 
+                options.addArguments("--headless=new");
+
+            }
             driver = new ChromeDriver(options);
         }
         driver.manage().window().maximize();
