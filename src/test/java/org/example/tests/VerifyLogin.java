@@ -4,7 +4,9 @@ import listeners.Testlistners;
 import org.example.base.BasicTest;
 import org.example.pages.*;
 import org.example.utils.ConfigReader;
+import org.example.utils.DriverManager;
 import org.example.utils.ExcelReader;
+import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.PageFactory;
 import org.testng.Assert;
 import org.testng.annotations.DataProvider;
@@ -14,7 +16,11 @@ import org.testng.annotations.Test;
 import java.util.List;
 @Listeners(Testlistners.class)
 public class VerifyLogin extends BasicTest {
+    public WebDriver getDriver(){
 
+        return DriverManager.getDriver();
+
+    }
     @Test(dataProvider="excelData")
     public void testLogin(String mailId, String passwd, String userId, String productName,
                           String cardName,
@@ -24,7 +30,7 @@ public class VerifyLogin extends BasicTest {
                           String year,
                           String expectedMsg){
 
-        LoginPage lp = new LoginPage(driver);
+        LoginPage lp = new LoginPage(getDriver());
         ProductPage pp = lp.fullLogin(mailId,passwd);
 
         System.out.println(mailId + passwd);
