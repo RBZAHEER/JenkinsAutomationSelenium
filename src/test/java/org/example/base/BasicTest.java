@@ -34,7 +34,7 @@ public class BasicTest {
         String headless =
                 ConfigReader.getProperties("headless");
 
-
+        String gridUrl = ConfigReader.getProperties("gridUrl");
         // ==============================
         // CHROME
         // ==============================
@@ -98,7 +98,7 @@ public class BasicTest {
                     new RemoteWebDriver(
 
                             new URL(
-                                    "http://192.168.0.104:4444"
+                                    gridUrl
                             ),
 
                             options
@@ -135,7 +135,7 @@ public class BasicTest {
                     new RemoteWebDriver(
 
                             new URL(
-                                    "http://192.168.0.104:4444"
+                                    gridUrl
                             ),
 
                             options
@@ -182,7 +182,7 @@ public class BasicTest {
                     new RemoteWebDriver(
 
                             new URL(
-                                    "http://192.168.0.104:4444"
+                                    gridUrl
                             ),
 
                             options
